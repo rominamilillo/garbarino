@@ -37,7 +37,8 @@ class Garbarino(unittest.TestCase):
         self.Paso1Page.ingresarCiudad("caba")
         self.Paso1Page.seleccionarCiudad()
         self.Paso1Page.irPaso2()
-        self.Paso2Page.primerTarjeta()   
+        self.Paso2Page.primerTarjeta()
+        breakpoint()   
         #self.Paso2Page.seleccionarCuota()   
         breakpoint()
 

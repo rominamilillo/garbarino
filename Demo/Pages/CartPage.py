@@ -20,5 +20,3 @@ class CartPage(object):
         continuar.click()
         self.driver.implicitly_wait(3)
 
-
-

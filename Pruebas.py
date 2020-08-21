@@ -13,7 +13,8 @@ from Pages.Paso4Page import Paso4Page
 class Garbarino(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Chrome('chromedriver')
-        self.driver.get('https://www.garbarino.com/')
+        #self.driver.get('https://www.garbarino.com/')
+        self.driver.get('https://www.garbarino.com/producto/notebook-asus-x509ma-br005t-intel-celeron/3b3bc916b2')
         self.HomePage = HomePage(self.driver)
         self.ListPage = ListPage(self.driver)
         self.DetailPage = DetailPage(self.driver)
@@ -24,18 +25,20 @@ class Garbarino(unittest.TestCase):
         self.Paso4Page = Paso4Page(self.driver)
 
     def testBusqueda_y_checkout(self):
-        self.HomePage.ingresar_busqueda('cocina')
-        self.ListPage.ordenar_asc()
-        self.ListPage.filtrar_precio("100", "500000")
-        self.ListPage.paginar()
-        self.ListPage.ir_a_primer_producto()
-        self.driver.implicitly_wait(3)
+        #self.HomePage.ingresar_busqueda('cocina')
+        #self.HomePage.buscar()
+        #self.ListPage.orden()
+        #self.ListPage.ordenar_asc()
+        #self.ListPage.filtrar_precio("100", "500000")
+        #self.ListPage.paginar()
+        #self.ListPage.ir_a_primer_producto()
+        #self.driver.implicitly_wait(3)
         self.DetailPage.ir_a_carrito()
         self.driver.implicitly_wait(15)
         self.CartPage.setear_cantidad_2()
         self.CartPage.ir_a_checkout()
-        self.Paso1Page.ingresarCiudad("caba")
-        self.Paso1Page.seleccionarCiudad()
+        self.Paso1Page.ingresarCiudad("Munro")
+        self.Paso1Page.seleccionarSucursal()
         self.Paso1Page.irPaso2()
         self.Paso2Page.seleccionarPrimerTarjeta()
         self.Paso2Page.seleccionarCuota()   
@@ -43,6 +46,7 @@ class Garbarino(unittest.TestCase):
         self.Paso3Page.completarPaso3()
         self.Paso3Page.irPaso4()
         #breakpoint()   
+
 
 if __name__ == "__main__":
     unittest.main()

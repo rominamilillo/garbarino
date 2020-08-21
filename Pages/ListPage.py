@@ -14,9 +14,11 @@ class ListPage(object):
         self.precio_setear = (By.ID, 'prange')
         self.producto = (By.XPATH, "//*[contains(@id, 'item-description')]")
 
-    def ordenar_asc(self):
+    def orden(self):
         ordenar = WebDriverWait(self.driver, 5).until(EC.presence_of_element_located(self.ordenar))
         ordenar.click()
+
+    def ordenar_asc(self):
         ascendente = WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located(self.ascendente))
         ascendente.click()
 
@@ -40,4 +42,3 @@ class ListPage(object):
         producto.click()
         self.driver.implicitly_wait(3)
 
-   

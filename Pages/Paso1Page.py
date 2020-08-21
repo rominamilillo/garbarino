@@ -4,6 +4,7 @@ from selenium.webdriver.support.ui import Select
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 import pdb
+from selenium.webdriver.common.keys import Keys
 from selenium.webdriver import ActionChains
 import time
 
@@ -12,20 +13,18 @@ class Paso1Page(object):
         self.driver = driver
         self.ciudad = (By.ID, 'c1ty')
         self.selectCity = (By.XPATH, '//*[@id="remote"]/div/div/div[1]')
-        self.pickup = (By.XPATH, "//*[@id='checkout-entrega']//label")
 
+        self.pickup = (By.XPATH, "//*[@id='checkout-entrega']//label")
         self.sucursal = (By.XPATH, '/html/body/main/div/div[1]/section[1]/div[3]/form[1]/div[2]/div[1]/ul/li[1]/ul/li[2]/label/input')
-        
         self.continuar = (By.ID, "continue-pickup")
 
     def ingresarCiudad(self, city): 
-        ciudad = WebDriverWait(self.driver, 20).until(EC.presence_of_element_located(self.ciudad))
-        ActionChains(self.driver).move_to_element(ciudad).send_keys(city).perform()
-        seleccionar = WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable(self.selectCity))            
-        seleccionar.click()
-        self.driver.implicitly_wait(15)
+        ciudad = WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable(self.ciudad))            
+        ciudad.send_keys(city)
+        time.sleep(3)
+        ciudad.send_keys(Keys.ENTER)
 
-    def seleccionarCiudad(self):
+    def seleccionarSucursal(self):
         pickup = WebDriverWait(self.driver, 20).until(EC.presence_of_element_located(self.pickup))
         pickup.click()
         time.sleep(2)

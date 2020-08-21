@@ -12,7 +12,7 @@ class CartPage(object):
         self.continuar = (By.ID, 'cart-buy-btn')
 
     def setear_cantidad_2(self):
-        setear_cantidad = Select(self.driver.find_element(*self.seleccion))
+        setear_cantidad = Select(self.driver.find_element(*self.seleccion)) 
         setear_cantidad.select_by_index(1)
 
     def ir_a_checkout(self):

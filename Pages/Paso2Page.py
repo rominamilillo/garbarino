@@ -23,7 +23,6 @@ class Paso2Page(object):
         time.sleep(1)
         cuotas.click()
 
-
     def irPaso3(self):
         continuar = WebDriverWait(self.driver, 20).until(EC.presence_of_element_located(self.continuar))
         continuar.click()

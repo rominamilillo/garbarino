@@ -14,6 +14,8 @@ class HomePage:
     def ingresar_busqueda(self, bla):
         autocomplete = WebDriverWait(self.driver, 4).until(EC.visibility_of_element_located(self.autocomplete))
         autocomplete.send_keys(bla)
+
+    def buscar(self):
         boton_buscar = WebDriverWait(self.driver, 4).until(EC.visibility_of_element_located(self.boton))
         boton_buscar.click()
 

@@ -16,7 +16,7 @@ class CartPage(object):
         setear_cantidad.select_by_index(1)
 
     def ir_a_checkout(self):
-        continuar = WebDriverWait(self.driver, 5).until(EC.presence_of_element_located(self.continuar))
+        continuar = WebDriverWait(self.driver, 20).until(EC.presence_of_element_located(self.continuar))
         continuar.click()
         self.driver.implicitly_wait(3)
 

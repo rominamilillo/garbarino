@@ -15,30 +15,28 @@ class ListPage(object):
         self.producto = (By.XPATH, "//*[contains(@id, 'item-description')]")
 
     def orden(self):
-        ordenar = WebDriverWait(self.driver, 5).until(EC.presence_of_element_located(self.ordenar))
-        ordenar.click()
+        WebDriverWait(self.driver, 15).until(EC.presence_of_element_located(self.ordenar)).click()
 
     def ordenar_asc(self):
-        ascendente = WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located(self.ascendente))
-        ascendente.click()
+        WebDriverWait(self.driver, 15).until(EC.visibility_of_element_located(self.ascendente)).click()
 
-    def filtrar_precio(self, minimo, maximo):
-        precio_minimo = WebDriverWait(self.driver, 5).until(EC.presence_of_element_located(self.precio_minimo))
-        precio_maximo = WebDriverWait(self.driver, 5).until(EC.presence_of_element_located(self.precio_maximo))
-        precio_setear = WebDriverWait(self.driver, 5).until(EC.presence_of_element_located(self.precio_setear))
-        precio_minimo.clear()
-        precio_minimo.send_keys(minimo)
+    def setearMaximo(self, maximo):
+        precio_maximo = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(self.precio_maximo))
         precio_maximo.clear()
         precio_maximo.send_keys(maximo)
-        precio_setear.click()
+
+    def setearMinimo(self, minimo):
+        precio_minimo = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(self.precio_minimo))
+        precio_minimo.clear()
+        precio_minimo.send_keys(minimo)
+
+    def filtrar_precio(self):
+        WebDriverWait(self.driver, 20).until(EC.presence_of_element_located(self.precio_setear)).click()
         self.driver.implicitly_wait(3)
 
     def paginar(self):
-        paginado = WebDriverWait(self.driver, 5).until(EC.presence_of_element_located(self.paginado))
-        paginado.click()
+        WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(self.paginado)).click()
       
     def ir_a_primer_producto(self):
-        producto = WebDriverWait(self.driver, 5).until(EC.presence_of_element_located(self.producto))
-        producto.click()
-        self.driver.implicitly_wait(3)
-
+        WebDriverWait(self.driver, 20).until(EC.presence_of_element_located(self.producto)).click()
+        #self.driver.implicitly_wait(3)

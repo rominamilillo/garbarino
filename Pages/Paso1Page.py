@@ -15,6 +15,7 @@ class Paso1Page(object):
         self.pickup = (By.XPATH, '//p[contains(text(), "Retiro en sucursal ")]')
         self.sucursal = (By.XPATH, '//*[@id="stores"]//label')
         self.continuar = (By.ID, "continue-pickup")
+        self.continuar_virtual = (By.ID, "continue")
 
     def ingresarCiudad(self, city): 
         ciudad = WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable(self.ciudad))            
@@ -31,4 +32,7 @@ class Paso1Page(object):
         WebDriverWait(self.driver, 20).until(EC.presence_of_element_located(self.continuar)).click()
         self.driver.implicitly_wait(15)
 
+    def irPaso2Virtual(self):
+        WebDriverWait(self.driver, 20).until(EC.presence_of_element_located(self.continuar_virtual)).click()
+        self.driver.implicitly_wait(15)
 

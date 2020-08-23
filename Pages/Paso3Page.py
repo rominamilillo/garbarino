@@ -52,7 +52,7 @@ class Paso3Page(object):
 
         self.driver.find_element(*self.terminos).click()
 
-        breakpoint()   
+        breakpoint()
 
     def irPaso4(self):
         WebDriverWait(self.driver, 20).until(EC.presence_of_element_located(self.continuar)).click()

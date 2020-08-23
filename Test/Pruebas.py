@@ -12,10 +12,13 @@ from Pages.Paso4Page import Paso4Page
 from Pages.Paso4Page import Paso4Page
 from Pages.LoginPage import LoginPage
 
+#rocio
+from webdriver_manager.chrome import ChromeDriverManager
 
 class Garbarino(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Chrome('chromedriver')
+        #self.driver = webdriver.Chrome(ChromeDriverManager().install())
         self.driver.get('https://www.garbarino.com/')
         self.HomePage = HomePage(self.driver)
         self.ListPage = ListPage(self.driver)
@@ -50,7 +53,7 @@ class Garbarino(unittest.TestCase):
         self.Paso1Page.ingresarCiudad("Munro")
         self.Paso1Page.seleccionarSucursal()
         self.Paso1Page.irPaso2()
-
+        self.driver.implicitly_wait(15)
         self.Paso2Page.seleccionarPrimerTarjeta()
         self.Paso2Page.seleccionarCuota()   
         self.Paso2Page.irPaso3()

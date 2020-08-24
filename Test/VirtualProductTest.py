@@ -15,23 +15,22 @@ import requests
 
 def  obtener_producto_virtual(url, headers):
     productos = (requests.get(url, headers=headers)).json()
-    ran = random.randint(0, int(productos['size'])-1, 1)
+    ran = random.randint(0, int(productos['size'])-1)
     return productos['items'][ran]
 
 class Garbarino(unittest.TestCase):
 
     def setUp(self):
-        url = "http://api-support-ci.garba.ninja/repositories/garbarino/virtual"
+        url = "http://api-support-prod.garba.ninja/repositories/garbarino/virtual"
         headers = {
             'Content-Type': 'application/json',
             'api-key': '79b36129-cdd0-4034-8da7-ed94223c02a1'
         }
         base_URL = "https://www.garbarino.com"
 
-        #self.driver = webdriver.Chrome('chromedriver')
-        self.driver = webdriver.Chrome(ChromeDriverManager().install())
-        #url_producto = base_URL + "/producto/" + obtener_producto_virtual(url, headers)
-        url_producto = base_URL + "/producto/" + "f6fffe1892"
+        self.driver = webdriver.Chrome('chromedriver')
+        #self.driver = webdriver.Chrome(ChromeDriverManager().install())
+        url_producto = base_URL + "/producto/" + obtener_producto_virtual(url, headers)
         self.driver.get(url_producto)
         self.DetailPage = DetailPage(self.driver)
         self.CartPage = CartPage(self.driver)

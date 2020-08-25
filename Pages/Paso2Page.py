@@ -20,7 +20,7 @@ class Paso2Page(object):
 
     def seleccionarCuota(self):
         cuotas = self.driver.find_element(*self.cuotas)
-        time.sleep(1)
+        time.sleep(2)
         cuotas.click()
 
     def irPaso3(self):

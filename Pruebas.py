@@ -9,16 +9,10 @@ from Pages.CartPage import CartPage
 from Pages.Paso1Page import Paso1Page
 from Pages.Paso2Page import Paso2Page
 from Pages.Paso3Page import Paso3Page
-from Pages.Paso4Page import Paso4Page
-from Pages.Paso4Page import Paso4Page
-
-#rocio
-#from webdriver_manager.chrome import ChromeDriverManager
 
 class Garbarino(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Chrome('chromedriver')
-        #self.driver = webdriver.Chrome(ChromeDriverManager().install())
         self.driver.get('https://www.garbarino.com/')
         self.HomePage = HomePage(self.driver)
         self.ListPage = ListPage(self.driver)
@@ -27,7 +21,6 @@ class Garbarino(unittest.TestCase):
         self.Paso1Page = Paso1Page(self.driver)
         self.Paso2Page = Paso2Page(self.driver)
         self.Paso3Page = Paso3Page(self.driver)
-        self.Paso4Page = Paso4Page(self.driver)
 
     def testBusqueda_y_checkout(self):
         self.HomePage.ingresar_busqueda('tv led')
@@ -60,10 +53,6 @@ class Garbarino(unittest.TestCase):
         self.Paso3Page.completarPaso3()
         self.Paso3Page.irPaso4()
         #breakpoint()   
-
-#@unittest.skip("No needed now")
-    #def testLogin(self):
-        #self.page.method()
 
 if __name__ == "__main__":
     unittest.main()

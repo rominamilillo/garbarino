@@ -29,11 +29,11 @@ class Paso3Page(object):
         self.continuar = (By.ID, 'continue')
      
     def completarPaso3(self):
-        self.driver.find_element(*self.nombre).send_keys("Romina")
-        self.driver.find_element(*self.apellido).send_keys("Milillo")
+        self.driver.find_element(*self.nombre).send_keys("Laura")
+        self.driver.find_element(*self.apellido).send_keys("Fernandez")
         
         Select(self.driver.find_element(*self.tipoDNI)).select_by_value("DNI")
-        self.driver.find_element(*self.dni).send_keys("34503338")
+        self.driver.find_element(*self.dni).send_keys("23444555")
 
         Select(self.driver.find_element(*self.diaNacimiento)).select_by_value("28")
         Select(self.driver.find_element(*self.mesNacimiento)).select_by_visible_text("Marzo")
@@ -56,6 +56,6 @@ class Paso3Page(object):
 
     def irPaso4(self):
         WebDriverWait(self.driver, 20).until(EC.presence_of_element_located(self.continuar)).click()
-        time.sleep(5)
+        time.sleep(5) #aca solo pude hacer que funcione asi
 
 
